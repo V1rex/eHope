@@ -3,4 +3,16 @@
     <color name="colorPrimary">#53cff8</color>
     <color name="colorPrimaryDark">#46afd1</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="slide_one_color_start">#c17afc</color>
+    <color name="slide_one_color_end">#f42e78</color>
+
+    <color name="slide_two_color_start">#f50b9a</color>
+    <color name="slide_two_color_end">#ff839d</color>
+
+    <color name="slide_three_color_start">#34ebe9</color>
+    <color name="slide_three_color_end">#d0ffae</color>
+
+    <color name="slide_four_color_start">#ff8993</color>
+    <color name="slide_four_color_end">#fec180</color>
 </resources>

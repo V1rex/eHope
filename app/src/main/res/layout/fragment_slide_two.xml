@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:gradient="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.SlideTwoFragment"
+    android:background="#ffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+   >
+
+        <com.dynamitechetan.flowinggradient.FlowingGradient
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            gradient:transition_drawable="@drawable/animation_gradient_two"
+            gradient:transition_duration = "4000"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/hero_need"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="28dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>
