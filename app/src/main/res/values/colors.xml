@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#53cff8</color>
-    <color name="colorPrimaryDark">#46afd1</color>
+    <color name="colorPrimary">#e84393</color>
+    <color name="colorPrimaryDark">#d13d85</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimaryBlur">#56e84393</color>
+    <color name="colorPrimaryGray">#3e000000</color>
+
 
     <color name="slide_one_color_start">#c17afc</color>
     <color name="slide_one_color_end">#f42e78</color>
@@ -15,4 +19,6 @@
 
     <color name="slide_four_color_start">#ff8993</color>
     <color name="slide_four_color_end">#fec180</color>
+
+    <color name="transparentColorPrimary">#36ffffff</color>
 </resources>

@@ -1,15 +1,13 @@
 package com.v1rex.ehope.Activities
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.v1rex.ehope.R
 
-class SplashActivity : AppCompatActivity() {
+class LoginRegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = Intent(this,MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        setContentView(R.layout.activity_login_register)
     }
 }
