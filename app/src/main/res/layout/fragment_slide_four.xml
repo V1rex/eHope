@@ -21,7 +21,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -33,6 +34,15 @@
                 android:textSize="28dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="8dp"
+                android:paddingRight="32dp"
+                android:layout_height="160dp"
+                android:src="@drawable/person"
+                android:paddingLeft="32dp"/>
         </LinearLayout>
     </RelativeLayout>
 
