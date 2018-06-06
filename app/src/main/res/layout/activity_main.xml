@@ -5,22 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/gradient_normal">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparentColorPrimary">
+        >
 
-        <ImageView
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="28dp"
-            android:src="@drawable/logo3"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:paddingTop="28dp"
+                android:src="@drawable/logo4"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hero_born"
+                android:fontFamily="sans-serif-condensed"
+                android:textAlignment="center"
+                android:textSize="24dp"
+                android:textColor="#fff"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:weightSum="2"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
@@ -29,18 +47,22 @@
                 android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
+                android:layout_margin="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="#15414141"
                 android:text="@string/login"
+                android:fontFamily="sans-serif-condensed"
                 android:textColor="#fff"/>
 
             <Button
                 android:id="@+id/register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
+                android:layout_margin="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="#15414141"
                 android:text="@string/register"
+                android:fontFamily="sans-serif-condensed"
                 android:textColor="#fff"/>
 
         </LinearLayout>

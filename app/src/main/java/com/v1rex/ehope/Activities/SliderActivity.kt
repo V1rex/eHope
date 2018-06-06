@@ -33,6 +33,7 @@ class SliderActivity : AppIntro2() {
     override fun onSkipPressed(currentFragment: Fragment?) {
         super.onSkipPressed(currentFragment)
         val intent = Intent(this, LoginRegisterActivity::class.java)
+        intent.putExtra("type","register")
         startActivity(intent)
 
     }
@@ -40,6 +41,7 @@ class SliderActivity : AppIntro2() {
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
         val intent = Intent(this, LoginRegisterActivity::class.java)
+        intent.putExtra("type","register")
         startActivity(intent)
     }
 

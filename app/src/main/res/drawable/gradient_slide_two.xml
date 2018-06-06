@@ -4,11 +4,9 @@
     <item>
         <shape>
             <gradient
-                android:startColor="@color/slide_two_color_start"
-                android:centerColor="@color/slide_three_color_start"
-                android:endColor="@color/slide_two_color_end"
                 android:angle="135"
-                android:type="linear" />
+                android:endColor="#34e89e"
+                android:startColor="#0f3443" />
 
         </shape>
     </item>
