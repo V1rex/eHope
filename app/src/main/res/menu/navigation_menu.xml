@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/test_abilities"
+        android:title="Test your abilities"
+        android:icon="@drawable/ic_accessibility_black_24dp"/>
+
+    <item
+        android:id="@+id/sensibilisation"
+        android:title="Sensibilisation"
+        android:icon="@drawable/ic_info_black_24dp"/>
+
+    <item
+        android:id="@+id/nearby_center"
+        android:title="Nearby Donation Center"
+        android:icon="@drawable/ic_place_black_24dp"/>
+
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_person_pin_black_24dp"/>
+
+
+</menu>

@@ -12,7 +12,7 @@
     <com.dynamitechetan.flowinggradient.FlowingGradient
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        gradient:transition_drawable="@drawable/animation_gradient_login"
+        gradient:transition_drawable="@drawable/animation_gradient_two"
         gradient:transition_duration = "4000"
         />
 
