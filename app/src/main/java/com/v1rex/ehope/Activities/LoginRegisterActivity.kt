@@ -31,5 +31,22 @@ class LoginRegisterActivity : AppCompatActivity() {
             "register" ->{register_btn.visibility = View.VISIBLE
                         login_btn.visibility = View.GONE}
         }
+
+
+        login_btn.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        register_btn.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

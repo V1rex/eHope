@@ -35,6 +35,7 @@ class SliderActivity : AppIntro2() {
         val intent = Intent(this, LoginRegisterActivity::class.java)
         intent.putExtra("type","register")
         startActivity(intent)
+        finish()
 
     }
 
@@ -43,6 +44,7 @@ class SliderActivity : AppIntro2() {
         val intent = Intent(this, LoginRegisterActivity::class.java)
         intent.putExtra("type","register")
         startActivity(intent)
+        finish()
     }
 
 
