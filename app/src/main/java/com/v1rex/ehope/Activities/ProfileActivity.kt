@@ -19,8 +19,8 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         when(id){
             R.id.test_abilities -> Toast.makeText(this, "This abilities", Toast.LENGTH_SHORT).show()
             R.id.sensibilisation -> Toast.makeText(this, "This sensi", Toast.LENGTH_SHORT).show()
-            R.id.nearby_center -> Toast.makeText(this, "This nearby", Toast.LENGTH_SHORT).show()
-           R.id.logout -> Toast.makeText(this, "This logout", Toast.LENGTH_SHORT).show()
+            R.id.nearby_center -> startActivity(Intent(this, NearbyCenterActivity::class.java))
+           R.id.logout -> startActivity(Intent(this, MainActivity::class.java))
         }
         return false
     }
