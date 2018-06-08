@@ -45,7 +45,8 @@
 
         <activity
             android:name=".Activities.NearbyCenterActivity"
-            android:label="@string/title_activity_nearby_center"></activity>
+            android:label="@string/title_activity_nearby_center" />
+        <activity android:name=".Activities.EditProfileActivity"></activity>
     </application>
 
 </manifest>

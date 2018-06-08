@@ -13,6 +13,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.v1rex.ehope.R
+import kotlinx.android.synthetic.main.activity_nearby_center.*
+import kotlinx.android.synthetic.main.activity_profile.*
 
 class NearbyCenterActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -22,6 +24,15 @@ class NearbyCenterActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nearby_center)
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+
+        setSupportActionBar(my_toolbar_nearby)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        my_toolbar_nearby.setNavigationOnClickListener {
+            finish()
+        }
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment

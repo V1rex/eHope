@@ -48,7 +48,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
 
         edit_profile_icon.setOnClickListener {
-            Toast.makeText(this, "This edit", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
     }
 
@@ -56,8 +56,6 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         if(drawerToggle!!.onOptionsItemSelected(item)){
             return true
         }
-
-
 
 
         return super.onOptionsItemSelected(item)
