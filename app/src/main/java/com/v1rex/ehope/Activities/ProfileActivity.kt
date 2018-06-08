@@ -52,6 +52,10 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         edit_profile_icon.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
         }
+
+        see_points.setOnClickListener {
+            startActivity(Intent(this, UserDonationsActivity::class.java))
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

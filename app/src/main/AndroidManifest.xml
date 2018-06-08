@@ -47,7 +47,8 @@
             android:name=".Activities.NearbyCenterActivity"
             android:label="@string/title_activity_nearby_center" />
         <activity android:name=".Activities.EditProfileActivity" />
-        <activity android:name=".Activities.EarnPointsActivity"></activity>
+        <activity android:name=".Activities.EarnPointsActivity" />
+        <activity android:name=".Activities.UserDonationsActivity"></activity>
     </application>
 
 </manifest>
