@@ -45,7 +45,9 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_dehaze_black_24dp)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
+        earn_button.setOnClickListener {
+            startActivity(Intent(this, EarnPointsActivity::class.java))
+        }
 
         edit_profile_icon.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
