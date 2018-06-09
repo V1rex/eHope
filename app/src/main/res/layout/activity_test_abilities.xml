@@ -1,0 +1,1461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.TestAbilitiesActivity"
+    android:background="#2c3e50">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar_test"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/gradient_normal"
+        android:elevation="4dp"
+        android:theme="@style/Theme.AppCompat.Light"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:popupTheme="@style/Theme.AppCompat.Light"
+        app:subtitleTextColor="@android:color/white"
+        app:title="Test your abilities"
+        app:titleTextColor="@android:color/white" />
+
+
+    <RelativeLayout
+        android:id="@+id/question_1_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="visible">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="1/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Are you infected with HIV ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_1"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_1"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_2_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="2/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Do you have hepatitis C ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_2"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_2"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_3_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="3/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Are you suffering from Syphilis?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_3"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_3"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_4_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="4/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="What is your current weight ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_button"
+                android:orientation="horizontal"
+                android:showDividers="middle">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/weight_drawable" />
+
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/connect_help"
+                    android:layout_margin="8dp"
+                    android:background="#70000000"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="5dip" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Your Weight in kg"
+                    android:inputType="numberDecimal"
+                    android:shadowColor="@android:color/white"
+                    android:textColor="@android:color/white"
+                    android:textColorHighlight="@android:color/white"
+                    android:textColorHint="@android:color/white"
+                    android:textColorLink="@android:color/white" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/next_4"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="next"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_5_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="5/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you ever had a blood transfusion ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_5"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_5"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_6_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="6/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you had gonorrhea or other sexually transmitted diseases in the last 12 months?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_6"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_6"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_7_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="7/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you changed your sexual partner in the last 4 months ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_7"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_7"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_8_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="8/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="
+Had you stay of at least 6 months in the last 12 months in countries whose population is largely affected by the AIDS epidemic?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/yes_8"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_8"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_9_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="9/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you ever had an organ transplant ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_9"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_9"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_10_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="10/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Are you pregnant ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_10"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_10"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_11_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="11/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you give birth for less than 6 months?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="28dp" />
+
+            <Button
+                android:id="@+id/yes_11"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_11"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_12_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="12/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="
+Have you had a fever or infection (cough, urinary tract infection, skin sores, etc.) in the last 2 weeks?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_12"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_12"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_13_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="13/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you had any surgery in the last 4 months ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_13"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_13"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_14_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="14/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you undergone endoscopy (gastroscopic fibroscopy, colonoscopy, etc.) in the last 4 months ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_14"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_14"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_15_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="15/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you had recent heart pains after an effort?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_15"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_15"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_16_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="16/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you had any tests and treatments done by the dentist or dental hygienist for less than 30 days ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_16"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_16"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_17_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="17/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Have you been taking antibiotics for less than 2 weeks?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_17"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_17"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_18_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="18/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Do you have a tattoo ?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_18"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_18"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/question_19_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Question"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="48dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="19/19"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Do you have cancer?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp" />
+
+            <Button
+                android:id="@+id/yes_19"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="yes"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/no_19"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="no"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
