@@ -121,6 +121,57 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
     }
 
+    private fun register(){
+        if (mAuth == null) {
+            return
+        }
+
+        var cancel = false
+
+        var email = user_register_edit_text.text.toString()
+        var password = password_register_edit_text.text.toString()
+
+        if (!TextUtils.isEmpty(password) ) {
+            // TODO add error to the layout
+            cancel = true
+        } else if(!isPasswordValid(password)){
+            // TODO add error to the layout
+            cancel = true
+        } else{
+            cancel = false
+        }
+
+        if (TextUtils.isEmpty(email)) {
+            // TODO add error to the layout
+            cancel = true
+        } else if (!isEmailValid(email)) {
+            // add error to the layout
+            cancel = true
+        } else {
+            cancel = false
+        }
+
+        if(!cancel){
+            // TODO add the progress layout
+
+            mAuth!!.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+                // TODO set the progress layout visibility to GONE
+
+                if (!task.isSuccessful) {
+                    // TODO if task isn't successfully add error to the layout
+
+                } else {
+
+                    // TODO start activity
+                    finish()
+
+                }
+            }
+
+        }
+
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if(drawerToggle!!.onOptionsItemSelected(item)){
             return true
