@@ -96,7 +96,45 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/progress_action"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#92000000"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:visibility="visible"
+        >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@android:color/white"
+            android:orientation="vertical"
+            android:layout_margin="32dp"
+            android:visibility="visible">
+            <TextView
+                android:id="@+id/action_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textColor="#2d2b2b"
+                android:fontFamily="sans-serif-condensed"
+                />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 

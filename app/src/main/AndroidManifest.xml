@@ -50,7 +50,8 @@
         <activity android:name=".Activities.EarnPointsActivity" />
         <activity android:name=".Activities.UserDonationsActivity" />
         <activity android:name=".Activities.TestAbilitiesActivity" />
-        <activity android:name=".Activities.SensibilisationActivity"></activity>
+        <activity android:name=".Activities.SensibilisationActivity" />
+        <activity android:name=".Activities.UserInformationsActivity"></activity>
     </application>
 
 </manifest>
