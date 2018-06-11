@@ -22,7 +22,6 @@ class LoginRegisterActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-
         val type:String = intent.getStringExtra("type")
 
         when(type)
@@ -36,13 +35,11 @@ class LoginRegisterActivity : AppCompatActivity() {
 
 
         login_btn.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+            login()
         }
 
         register_btn.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+            register()
         }
     }
 
@@ -57,27 +54,40 @@ class LoginRegisterActivity : AppCompatActivity() {
         var password = password_register_edit_text.text.toString()
 
         if (!TextUtils.isEmpty(password) ) {
-            // TODO add error to the layout
+            input_layout_password_register.error = "This field is requierd"
             cancel = true
-        } else cancel = !isPasswordValid(password)
+        } else if(!isPasswordValid(password)){
+            input_layout_password_register.error = "This password is invalid"
+            cancel = true
+        } else{
+            cancel = false
+        }
 
         if (TextUtils.isEmpty(email)) {
-            // TODO add error to the layout
+            input_layout_email_register.error = "This field is required"
             cancel = true
-        } else cancel = !isEmailValid(email)
+        } else if (!isEmailValid(email)) {
+            input_layout_email_register.error = "This email is invalid"
+            cancel = true
+        } else {
+            cancel = false
+        }
 
         if(!cancel){
-            // TODO add the progress layout
+
+            action_layout.visibility = View.GONE
+            progress_action.visibility = View.VISIBLE
+            action_message.text = "Login right now..."
 
             mAuth!!.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-                // TODO set the progress layout visibility to GONE
+                action_layout.visibility = View.VISIBLE
+                progress_action.visibility = View.GONE
 
                 if (!task.isSuccessful) {
-                    // TODO if task isn't successfully add error to the layout
-
+                    input_layout_email_register.error = "Error: can't login"
                 } else {
 
-                    // TODO start activity
+                    startActivity(Intent(this, ProfileActivity::class.java))
                     finish()
 
                 }
@@ -98,27 +108,40 @@ class LoginRegisterActivity : AppCompatActivity() {
         var password = password_register_edit_text.text.toString()
 
         if (!TextUtils.isEmpty(password) ) {
-            // TODO add error to the layout
+            input_layout_password_register.error = "This field is requierd"
             cancel = true
-        } else cancel = !isPasswordValid(password)
+        } else if(!isPasswordValid(password)){
+            input_layout_password_register.error = "This password is invalid"
+            cancel = true
+        } else{
+            cancel = false
+        }
 
         if (TextUtils.isEmpty(email)) {
-            // TODO add error to the layout
+            input_layout_email_register.error = "This field is required"
             cancel = true
-        } else cancel = !isEmailValid(email)
+        } else if (!isEmailValid(email)) {
+            input_layout_email_register.error = "This email is invalid"
+            cancel = true
+        } else {
+            cancel = false
+        }
 
         if(!cancel){
-            // TODO add the progress layout
+            action_layout.visibility = View.GONE
+            progress_action.visibility = View.VISIBLE
+            action_message.text = "Registering right now..."
 
             mAuth!!.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-                // TODO set the progress layout visibility to GONE
+                progress_action.visibility = View.GONE
+                action_layout.visibility = View.VISIBLE
 
                 if (!task.isSuccessful) {
-                    // TODO if task isn't successfully add error to the layout
+                    input_layout_email_register.error = "Error: can't login"
 
                 } else {
 
-                    // TODO start activity
+                    startActivity(Intent(this, UserInformationsActivity::class.java))
                     finish()
 
                 }
