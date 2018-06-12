@@ -18,15 +18,14 @@ import com.v1rex.ehope.Model.User
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
-
-
+import kotlinx.android.synthetic.main.header.*
 
 
 class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     var mAuth : FirebaseAuth? = null
-    var mDatabase : FirebaseDatabase? = null
-    var mRef : DatabaseReference? = null
-    var user : User? = null
+
+
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var id = item.itemId
 
@@ -48,14 +47,16 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         val userId = mAuth!!.uid.toString()
 
-        mDatabase = FirebaseDatabase.getInstance()
-        mRef = mDatabase!!.getReference("Data").child("Users").child(userId)
+        var mDatabase = FirebaseDatabase.getInstance()
+        mDatabase.setPersistenceEnabled(true)
+        var mRef = mDatabase.getReference("Data").child("Users").child(userId)
+
 
         var valueEventListenerUser = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                user = dataSnapshot.getValue(User::class.java)
-                changeUi()
+                var user = dataSnapshot.getValue(User::class.java)
+                changeUi(user)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -90,18 +91,22 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             startActivity(Intent(this, UserDonationsActivity::class.java))
         }
 
-        mRef!!.addValueEventListener(valueEventListenerUser)
+        mRef.addValueEventListener(valueEventListenerUser)
+
     }
 
-    fun changeUi(){
-        var heroName = user!!.mName
+    fun changeUi(user : User?){
+        var heroName = user?.mName
         hero_name.text = heroName
 
-        var heroType = user!!.mHeroType
+        var heroType = user?.mHeroType
         hero_type.text = "Hero type: $heroType"
 
-        var heroPoints = user!!.mPoints
+        var heroPoints = user?.mPoints
         hero_points.text = "${heroPoints.toString()}"
+
+        header_hero_name.text = user?.mName
+        header_hero_type.text = "Hero type: $heroType"
     }
 
     fun logout(){
