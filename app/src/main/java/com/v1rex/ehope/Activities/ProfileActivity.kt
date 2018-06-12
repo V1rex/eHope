@@ -34,7 +34,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             R.id.test_abilities -> startActivity(Intent(this, TestAbilitiesActivity::class.java))
             R.id.sensibilisation -> startActivity(Intent(this, SensibilisationActivity::class.java))
             R.id.nearby_center -> startActivity(Intent(this, NearbyCenterActivity::class.java))
-           R.id.logout -> startActivity(Intent(this, MainActivity::class.java))
+            R.id.logout -> { logout() }
         }
         return false
     }
@@ -102,6 +102,12 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         var heroPoints = user!!.mPoints
         hero_points.text = "${heroPoints.toString()}"
+    }
+
+    fun logout(){
+        mAuth!!.signOut()
+        startActivity(Intent(this, MainActivity::class.java))
+
     }
 
 
