@@ -11,18 +11,22 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.v1rex.ehope.R
-import com.v1rex.ehope.R.id.*
-import kotlinx.android.synthetic.main.activity_login_register.*
 import kotlinx.android.synthetic.main.activity_profile.*
-import com.google.firebase.auth.AuthResult
-import com.google.android.gms.tasks.Task
-import android.support.annotation.NonNull
-import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.v1rex.ehope.Model.User
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.ValueEventListener
+
 
 
 
 class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     var mAuth : FirebaseAuth? = null
+    var mDatabase : FirebaseDatabase? = null
+    var mRef : DatabaseReference? = null
+    var user : User? = null
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var id = item.itemId
 
@@ -40,8 +44,25 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
         mAuth = FirebaseAuth.getInstance()
+
+        val userId = mAuth!!.uid.toString()
+
+        mDatabase = FirebaseDatabase.getInstance()
+        mRef = mDatabase!!.getReference("Data").child("Users").child(userId)
+
+        var valueEventListenerUser = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                user = dataSnapshot.getValue(User::class.java)
+                changeUi()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+
+        }
 
         val navigationView = findViewById<NavigationView>(R.id.navigation_view)
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
@@ -68,6 +89,19 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         see_points.setOnClickListener {
             startActivity(Intent(this, UserDonationsActivity::class.java))
         }
+
+        mRef!!.addValueEventListener(valueEventListenerUser)
+    }
+
+    fun changeUi(){
+        var heroName = user!!.mName
+        hero_name.text = heroName
+
+        var heroType = user!!.mHeroType
+        hero_type.text = "Hero type: $heroType"
+
+        var heroPoints = user!!.mPoints
+        hero_points.text = "${heroPoints.toString()}"
     }
 
 

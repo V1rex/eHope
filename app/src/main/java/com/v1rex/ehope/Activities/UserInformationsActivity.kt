@@ -94,7 +94,7 @@ class UserInformationsActivity : AppCompatActivity() {
 
         if(!cancel){
             var userId :  String? = mAuth!!.uid
-            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe, userId)
+            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0, userId)
             var userId2 = userInformations.mUserId.toString()
             var mRef2 = mRef?.child(userId2)
             mRef2?.setValue(userInformations)
