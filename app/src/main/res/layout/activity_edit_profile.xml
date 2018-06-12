@@ -276,7 +276,7 @@
     </LinearLayout>
 
 
-    <!--   <LinearLayout
+    <LinearLayout
            android:id="@+id/date_picker_startup_layout"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
@@ -309,6 +309,6 @@
 
            </LinearLayout>
 
-       </LinearLayout> -->
+       </LinearLayout>
 
 </RelativeLayout>
