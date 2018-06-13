@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.header.*
 import android.net.NetworkInfo
 import android.content.Context.CONNECTIVITY_SERVICE
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 
 
@@ -65,7 +66,16 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     var user = dataSnapshot.getValue(User::class.java)
-                    changeUi(user)
+
+                    var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+
+
+                    var editor : SharedPreferences.Editor = sharedPref.edit()
+                    editor.putString("username",user!!.mName)
+                    editor.putString("userHeroType", user!!.mHeroType)
+                    editor.putString("userPoint",user!!.mPoints.toString())
+                    editor.apply()
+
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
@@ -76,9 +86,10 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             mRef.addValueEventListener(valueEventListenerUser)
         }
         else if (!isConnected){
-            Toast.makeText(this, "FailArmy", Toast.LENGTH_SHORT).show();
-        }
+            Toast.makeText(this, "You need to be connected to internet !", Toast.LENGTH_SHORT).show();
 
+        }
+        changeUi()
         val navigationView = findViewById<NavigationView>(R.id.navigation_view)
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
@@ -113,19 +124,8 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
     }
 
-    fun changeUi(user : User?){
-        var heroName = user?.mName
-        hero_name.text = heroName
 
-        var heroType = user?.mHeroType
-        hero_type.text = "Hero type: $heroType"
 
-        var heroPoints = user?.mPoints
-        hero_points.text = "${heroPoints.toString()}"
-
-        header_hero_name.text = user?.mName
-        header_hero_type.text = "Hero type: $heroType"
-    }
 
     fun logout(){
         mAuth!!.signOut()
@@ -133,10 +133,29 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         finish()
     }
 
+    fun changeUi(){
+        var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+        var heroName : String? = sharedPref.getString("username","")
+        hero_name.text = heroName
+
+        var heroType : String? = sharedPref.getString("userHeroType", "")
+        hero_type.text = "Hero type: $heroType"
+
+        var heroPoints : String? = sharedPref.getString("userPoint","")
+        hero_points.text = "${heroPoints.toString()}"
+
+
+    }
+
 
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if(drawerToggle!!.onOptionsItemSelected(item)){
+            var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+            var heroName : String? = sharedPref.getString("username","")
+            var heroType : String? = sharedPref.getString("userHeroType", "")
+            header_hero_name.text = heroName
+            header_hero_type.text = "Hero type: $heroType"
             return true
         }
 
