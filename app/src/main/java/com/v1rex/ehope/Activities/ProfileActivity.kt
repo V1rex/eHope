@@ -1,5 +1,6 @@
 package com.v1rex.ehope.Activities
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.header.*
+import android.net.NetworkInfo
+import android.content.Context.CONNECTIVITY_SERVICE
+import android.net.ConnectivityManager
+
+
 
 
 class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
@@ -47,9 +53,10 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         val userId = mAuth!!.uid.toString()
 
-        var mDatabase = FirebaseDatabase.getInstance()
-        mDatabase.setPersistenceEnabled(true)
-        var mRef = mDatabase.getReference("Data").child("Users").child(userId)
+
+
+        var mDatabase : FirebaseDatabase? = FirebaseDatabase.getInstance()
+        var mRef = mDatabase!!.getReference("Data").child("Users").child(userId)
 
 
         var valueEventListenerUser = object : ValueEventListener {
@@ -81,14 +88,18 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         earn_button.setOnClickListener {
             startActivity(Intent(this, EarnPointsActivity::class.java))
+            finish()
         }
 
         edit_profile_icon.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
+            finish()
+
         }
 
         see_points.setOnClickListener {
             startActivity(Intent(this, UserDonationsActivity::class.java))
+            finish()
         }
 
         mRef.addValueEventListener(valueEventListenerUser)
@@ -112,7 +123,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
     fun logout(){
         mAuth!!.signOut()
         startActivity(Intent(this, MainActivity::class.java))
-
+        finish()
     }
 
 
@@ -125,6 +136,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         return super.onOptionsItemSelected(item)
     }
+
 
 
 

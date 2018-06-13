@@ -101,6 +101,7 @@
                             android:paddingTop="5dip" />
 
                         <EditText
+                            android:id="@+id/edit_user_name"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_gravity="center_vertical"
@@ -143,6 +144,7 @@
                             android:paddingTop="5dip" />
 
                         <EditText
+                            android:id="@+id/edit_user-phone"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_gravity="center_vertical"
@@ -234,6 +236,7 @@
                             android:paddingTop="5dip" />
 
                         <EditText
+                            android:id="@+id/edit_user_weight"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_gravity="center_vertical"
@@ -274,41 +277,5 @@
 
 
     </LinearLayout>
-
-
-    <LinearLayout
-           android:id="@+id/date_picker_startup_layout"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:visibility="gone"
-           android:background="#96000000"
-           android:orientation="vertical">
-           <ImageButton
-               android:id="@+id/finished_date_startup"
-               android:layout_gravity="end"
-               android:layout_margin="16dp"
-               android:layout_width="32dp"
-               android:layout_height="32dp"
-               android:src="@drawable/accept"
-               android:background="@android:color/transparent"/>
-
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:layout_margin="56dp"
-               android:orientation="vertical">
-
-               <DatePicker
-                   android:id="@+id/date_picker_startup"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:background="@android:color/white"
-                   />
-
-
-
-           </LinearLayout>
-
-       </LinearLayout>
 
 </RelativeLayout>
