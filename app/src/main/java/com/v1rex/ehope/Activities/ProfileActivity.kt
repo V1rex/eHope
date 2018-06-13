@@ -49,6 +49,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
         mAuth = FirebaseAuth.getInstance()
 
         val userId = mAuth!!.uid.toString()
@@ -58,18 +59,24 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         var mDatabase : FirebaseDatabase? = FirebaseDatabase.getInstance()
         var mRef = mDatabase!!.getReference("Data").child("Users").child(userId)
 
+        var isConnected = isOnline()
+        if(isConnected){
+            var valueEventListenerUser = object : ValueEventListener {
 
-        var valueEventListenerUser = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    var user = dataSnapshot.getValue(User::class.java)
+                    changeUi(user)
+                }
 
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var user = dataSnapshot.getValue(User::class.java)
-                changeUi(user)
+                override fun onCancelled(databaseError: DatabaseError) {
+
+                }
+
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-
-            }
-
+            mRef.addValueEventListener(valueEventListenerUser)
+        }
+        else if (!isConnected){
+            Toast.makeText(this, "FailArmy", Toast.LENGTH_SHORT).show();
         }
 
         val navigationView = findViewById<NavigationView>(R.id.navigation_view)
@@ -102,7 +109,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             finish()
         }
 
-        mRef.addValueEventListener(valueEventListenerUser)
+
 
     }
 
@@ -135,6 +142,16 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
 
         return super.onOptionsItemSelected(item)
+    }
+
+    protected fun isOnline(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        return if (netInfo != null && netInfo.isConnectedOrConnecting) {
+            true
+        } else {
+            false
+        }
     }
 
 
