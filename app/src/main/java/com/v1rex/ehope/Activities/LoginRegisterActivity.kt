@@ -133,11 +133,12 @@ class LoginRegisterActivity : AppCompatActivity() {
             action_message.text = "Registering right now..."
 
             mAuth!!.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-                progress_action.visibility = View.GONE
-                action_layout.visibility = View.VISIBLE
+
 
                 if (!task.isSuccessful) {
-                    input_layout_email_register.error = "Error: can't login"
+                    progress_action.visibility = View.GONE
+                    action_layout.visibility = View.VISIBLE
+                    input_layout_email_register.error = "Error: can't register"
 
                 } else {
 
