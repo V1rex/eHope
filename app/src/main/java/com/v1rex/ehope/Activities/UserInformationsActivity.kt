@@ -98,7 +98,14 @@ class UserInformationsActivity : AppCompatActivity() {
             var userId :  String? = mAuth!!.uid
             var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0,0,0, userId)
 
+            var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
 
+
+            var editor : SharedPreferences.Editor = sharedPref.edit()
+            editor.putString("username",userInformations.mName)
+            editor.putString("userHeroType", userInformations.mHeroType)
+            editor.putString("userPoint",userInformations.mPoints.toString())
+            editor.apply()
 
             var userId2 = userInformations.mUserId.toString()
             var mRef2 = mRef?.child(userId2)
