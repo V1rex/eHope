@@ -540,8 +540,9 @@ class TestAbilitiesActivity : AppCompatActivity() {
 
         var user = User(user!!.mName, user!!.mPhoneNumber, user!!.mBirthday, user!!.mWeight, user!!.mSexe, user!!.mHeroType, user!!.mPoints, user!!.mNumberOfTest + 1 , user!!.mNumberOfDonations, user!!.mUserId)
         reference.setValue(user)
+        var FirebaseDatabase2 = com.google.firebase.database.FirebaseDatabase.getInstance()
+        var reference2 = FirebaseDatabase2.getReference("Data").child("Users").child(test.mUserId).child("Test").child((user.mNumberOfTest - 1).toString())
 
-        var reference2 = FirebaseDatabase.getReference("Data").child("Users").child(test.mUserId).child("Test").child(numberOfDonationsFinal.toString())
         reference2.setValue(test)
 
 
