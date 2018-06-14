@@ -49,6 +49,10 @@ class UserInformationsActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+
+    }
+
     fun sendInformations(){
         var cancel = false
 

@@ -24,8 +24,9 @@ import android.net.NetworkInfo
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
-
-
+import android.R.string.cancel
+import android.content.DialogInterface
+import android.support.v7.app.AlertDialog
 
 
 class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
@@ -124,6 +125,25 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
     }
 
+
+    override fun onBackPressed() {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("Exit Application?")
+        alertDialogBuilder
+                .setMessage("Click yes to exit!")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        DialogInterface.OnClickListener { dialog, id ->
+                            moveTaskToBack(true)
+                            android.os.Process.killProcess(android.os.Process.myPid())
+                            System.exit(1)
+                        })
+
+                .setNegativeButton("No", DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
 
 
 
