@@ -80,13 +80,13 @@ class LoginRegisterActivity : AppCompatActivity() {
             action_message.text = "Login right now..."
 
             mAuth!!.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-                action_layout.visibility = View.VISIBLE
-                progress_action.visibility = View.GONE
+
 
                 if (!task.isSuccessful) {
+                    action_layout.visibility = View.VISIBLE
+                    progress_action.visibility = View.GONE
                     input_layout_email_register.error = "Error: can't login"
                 } else {
-
                     startActivity(Intent(this, ProfileActivity::class.java))
                     finish()
 
