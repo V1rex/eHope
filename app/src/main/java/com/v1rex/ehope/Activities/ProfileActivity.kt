@@ -107,18 +107,17 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         earn_button.setOnClickListener {
             startActivity(Intent(this, EarnPointsActivity::class.java))
-            finish()
         }
 
         edit_profile_icon.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
-            finish()
+
 
         }
 
         see_points.setOnClickListener {
             startActivity(Intent(this, UserDonationsActivity::class.java))
-            finish()
+
         }
 
 
