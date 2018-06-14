@@ -1534,7 +1534,6 @@ Have you had a fever or infection (cough, urinary tract infection, skin sores, e
                 android:layout_height="wrap_content"
                 android:layout_marginTop="56dp"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Sorry you need to be connected to internet to test abilities"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"

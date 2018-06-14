@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_test_abilities.*
 
 class TestAbilitiesActivity : AppCompatActivity() {
     var user: User? = null
+    var test: Test? = null
     var numberOfDonationsFinal : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
 
 
         var userId : String = ""
-        var numberOfDonations : Int = 0
+        var numberOfTest : Int = 0
 
 
         var mResult = true
@@ -66,8 +67,59 @@ class TestAbilitiesActivity : AppCompatActivity() {
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     user = dataSnapshot.getValue(User::class.java)
-                    numberOfDonations = user!!.mNumberOfDonations
+                    numberOfTest = user!!.mNumberOfTest
+                    var number = numberOfTest
 
+
+                    if(number == 0){
+                        question_1_layout.visibility = View.VISIBLE
+                        message_layout.visibility = View.GONE
+                        numberOfDonationsFinal = 0
+                    }
+                    else if(number >0){
+                        mRef = mDatabase!!.getReference("Data").child("Users").child(user!!.mUserId.toString()).child("Test").child((user!!.mNumberOfTest - 1).toString())
+
+                        var valueEventListener = object : ValueEventListener {
+
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                test = dataSnapshot.getValue(Test::class.java)
+
+                                if(test!!.mInfinity  == false){
+                                    if(mResult){
+                                        if(user!!.mNumberOfTest > user!!.mNumberOfDonations ){
+                                            question_1_layout.visibility = View.GONE
+                                            message_layout.visibility = View.VISIBLE
+                                            message_text.setText("You have to make a blood donation and add it to your blood donation history to earn points")
+                                        }
+
+                                        else if(user!!.mNumberOfTest == user!!.mNumberOfDonations){
+                                            question_1_layout.visibility = View.VISIBLE
+                                            message_layout.visibility = View.GONE
+                                        }
+
+                                    }
+                                    else{
+                                        question_1_layout.visibility = View.GONE
+                                        message_layout.visibility = View.VISIBLE
+                                        message_text.setText("Sorry but you have to wait to ${test!!.mDateToDonate}")
+                                    }
+
+                                }
+                                else{
+                                    question_1_layout.visibility = View.GONE
+                                    message_layout.visibility = View.VISIBLE
+                                    message_text.setText("Sorry but you can't donate your blood")
+                                }
+
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {
+
+                            }
+
+                        }
+                        mRef.addValueEventListener(valueEventListener)
+                    }
 
                 }
 
@@ -79,17 +131,9 @@ class TestAbilitiesActivity : AppCompatActivity() {
 
             mRef.addValueEventListener(valueEventListenerUser)
 
-            if(numberOfDonations == 0){
-                question_1_layout.visibility = View.VISIBLE
-                message_layout.visibility = View.GONE
-                numberOfDonationsFinal = 0
-            } else if(numberOfDonations >0){
-                loadTestInfo()
-                numberOfDonationsFinal = numberOfDonations - 1
-            }
-
-        } else{
+        } else if(!isConnected){
             message_layout.visibility = View.VISIBLE
+            message_text.setText("Sorry you need to be connected to internet to test abilities")
         }
 
 
@@ -528,9 +572,6 @@ class TestAbilitiesActivity : AppCompatActivity() {
         }
     }
 
-    fun loadTestInfo(){
-
-    }
 
     fun sendTestInfo(test : Test){
 
