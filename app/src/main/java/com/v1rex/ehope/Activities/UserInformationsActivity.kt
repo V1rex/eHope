@@ -11,8 +11,10 @@ import kotlinx.android.synthetic.main.activity_user_informations.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.R.string.cancel
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AlertDialog
 import android.view.WindowManager
 import com.google.firebase.database.DatabaseReference
@@ -94,7 +96,10 @@ class UserInformationsActivity : AppCompatActivity() {
 
         if(!cancel){
             var userId :  String? = mAuth!!.uid
-            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0, userId)
+            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0,0,0, userId)
+
+
+
             var userId2 = userInformations.mUserId.toString()
             var mRef2 = mRef?.child(userId2)
             mRef2?.setValue(userInformations)

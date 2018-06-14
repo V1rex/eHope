@@ -86,7 +86,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
             mRef.addValueEventListener(valueEventListenerUser)
         }
         else if (!isConnected){
-            Toast.makeText(this, "You need to be connected to internet !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You need to be connected to internet !", Toast.LENGTH_SHORT).show()
 
         }
         changeUi()
@@ -128,6 +128,14 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
 
     fun logout(){
+        var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+
+
+        var editor : SharedPreferences.Editor = sharedPref.edit()
+        editor.putString("username","")
+        editor.putString("userHeroType", "")
+        editor.putString("userPoint","")
+        editor.apply()
         mAuth!!.signOut()
         startActivity(Intent(this, MainActivity::class.java))
         finish()

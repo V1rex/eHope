@@ -66,7 +66,7 @@ class EditProfileActivity : AppCompatActivity() {
 
 
             if(!cancel){
-                var user2 = User(userNameEdited, userPhoneEdited, user!!.mBirthday, weight, user!!.mSexe , user!!.mHeroType , user!!.mPoints, mAuth.uid.toString())
+                var user2 = User(userNameEdited, userPhoneEdited, user!!.mBirthday, weight, user!!.mSexe , user!!.mHeroType , user!!.mPoints, user!!.mNumberOfTest, user!!.mNumberOfDonations , mAuth.uid.toString())
                 sendData(user2)
 
 
