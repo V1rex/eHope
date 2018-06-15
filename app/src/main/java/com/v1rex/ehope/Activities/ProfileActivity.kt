@@ -52,6 +52,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        changeUi()
         mAuth = FirebaseAuth.getInstance()
 
         val userId = mAuth!!.uid.toString()
@@ -76,6 +77,8 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
                     editor.putString("userHeroType", user!!.mHeroType)
                     editor.putString("userPoint",user!!.mPoints.toString())
                     editor.apply()
+
+                    changeUi()
 
                 }
 
