@@ -1,17 +1,17 @@
 package com.v1rex.ehope.Activities
 
+import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.net.ConnectivityManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.v1rex.ehope.Model.Test
 import com.v1rex.ehope.Model.User
 import com.v1rex.ehope.R
@@ -22,6 +22,9 @@ class TestAbilitiesActivity : AppCompatActivity() {
     var user: User? = null
     var test: Test? = null
     var numberOfDonationsFinal : Int = 0
+    var mRef : DatabaseReference? = null
+    var valueEventListener : ValueEventListener? = null
+    var valueEventListenerUser : ValueEventListener? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_abilities)
@@ -60,10 +63,10 @@ class TestAbilitiesActivity : AppCompatActivity() {
             userId = mAuth!!.uid.toString()
 
             var mDatabase : FirebaseDatabase? = FirebaseDatabase.getInstance()
-            var mRef = mDatabase!!.getReference("Data").child("Users").child(userId)
+            mRef = mDatabase!!.getReference("Data").child("Users").child(userId)
 
 
-            var valueEventListenerUser = object : ValueEventListener {
+            valueEventListenerUser = object : ValueEventListener {
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     user = dataSnapshot.getValue(User::class.java)
@@ -77,9 +80,9 @@ class TestAbilitiesActivity : AppCompatActivity() {
                         numberOfDonationsFinal = 0
                     }
                     else if(number >0){
-                        mRef = mDatabase!!.getReference("Data").child("Users").child(user!!.mUserId.toString()).child("Test").child((user!!.mNumberOfTest - 1).toString())
+                        mRef = mDatabase.getReference("Data").child("Test").child(user!!.mUserId.toString()).child((user!!.mNumberOfTest - 1).toString())
 
-                        var valueEventListener = object : ValueEventListener {
+                        valueEventListener = object : ValueEventListener {
 
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
                                 test = dataSnapshot.getValue(Test::class.java)
@@ -88,8 +91,8 @@ class TestAbilitiesActivity : AppCompatActivity() {
                                     if(mResult){
                                         if(user!!.mNumberOfTest > user!!.mNumberOfDonations ){
                                             question_1_layout.visibility = View.GONE
-                                            message_layout.visibility = View.VISIBLE
-                                            message_text.setText("You have to make a blood donation and add it to your blood donation history to earn points")
+                                            showPopUp("You have to make a blood donation and add it to your blood donation history to earn points")
+
                                         }
 
                                         else if(user!!.mNumberOfTest == user!!.mNumberOfDonations){
@@ -100,16 +103,16 @@ class TestAbilitiesActivity : AppCompatActivity() {
                                     }
                                     else{
                                         question_1_layout.visibility = View.GONE
-                                        message_layout.visibility = View.VISIBLE
-                                        message_text.setText("Sorry but you have to wait to ${test!!.mDateToDonate}")
+                                        showPopUp("Sorry but you have to wait to ${test!!.mDateToDonate}")
                                     }
+
 
                                 }
                                 else{
-                                    question_1_layout.visibility = View.GONE
-                                    message_layout.visibility = View.VISIBLE
-                                    message_text.setText("Sorry but you can't donate your blood")
+                                    showPopUp("Sorry but you can't donate your blood")
                                 }
+
+
 
                             }
 
@@ -118,7 +121,8 @@ class TestAbilitiesActivity : AppCompatActivity() {
                             }
 
                         }
-                        mRef.addValueEventListener(valueEventListener)
+
+                        mRef?.addValueEventListener(valueEventListener as ValueEventListener)
                     }
 
                 }
@@ -129,7 +133,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
 
             }
 
-            mRef.addValueEventListener(valueEventListenerUser)
+            mRef?.addValueEventListener(valueEventListenerUser as ValueEventListener)
 
         } else if(!isConnected){
             message_layout.visibility = View.VISIBLE
@@ -554,6 +558,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
         }
 
         ok_20.setOnClickListener {
+
             finish()
         }
 
@@ -582,13 +587,33 @@ class TestAbilitiesActivity : AppCompatActivity() {
         var user = User(user!!.mName, user!!.mPhoneNumber, user!!.mBirthday, user!!.mWeight, user!!.mSexe, user!!.mHeroType, user!!.mPoints, user!!.mNumberOfTest + 1 , user!!.mNumberOfDonations, user!!.mUserId)
         reference.setValue(user)
         var FirebaseDatabase2 = com.google.firebase.database.FirebaseDatabase.getInstance()
-        var reference2 = FirebaseDatabase2.getReference("Data").child("Users").child(test.mUserId).child("Test").child((user.mNumberOfTest - 1).toString())
+        var reference2 = FirebaseDatabase2.getReference("Data").child("Test").child(user!!.mUserId.toString()).child((user!!.mNumberOfTest - 1).toString())
 
         reference2.setValue(test)
 
 
 
 
+
+
+    }
+
+    fun showPopUp(message : String){
+
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("Message")
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Okey",
+                        DialogInterface.OnClickListener { dialog, id ->
+
+                        })
+
+
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
 
