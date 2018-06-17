@@ -36,19 +36,32 @@ https://developers.google.com/maps/documentation/android-sdk/start
 
 # Screenshots!
 - Screenshot 1 :
-![](https://image.ibb.co/jnQbaJ/Screenshot_20180617_230049.jpg)
+
+![MainActivity](https://image.ibb.co/jnQbaJ/Screenshot_20180617_230049.jpg)
+
 - Screenshot 2 :
-![app icon](https://image.ibb.co/h45W9d/Screenshot_20180617_230052.jpg)
+
+![SlideActivity](https://image.ibb.co/h45W9d/Screenshot_20180617_230052.jpg)
+
 - Screenshot 3 :
-![](https://image.ibb.co/eGtwaJ/Screenshot_20180617_230057.jpg)
+
+![LoginRegisterActivity](https://image.ibb.co/eGtwaJ/Screenshot_20180617_230057.jpg)
+
 - Screenshot 4 :
-![](https://image.ibb.co/guiJpd/Screenshot_20180617_222723.jpg)
+
+![ProfileActivity](https://image.ibb.co/guiJpd/Screenshot_20180617_222723.jpg)
+
 - Screenshot 5 :
-![](https://image.ibb.co/jX59vJ/Screenshot_20180617_222734.jpg)
+
+![SlidingMenu](https://image.ibb.co/jX59vJ/Screenshot_20180617_222734.jpg)
+
 - Screenshot 6 :
-![](https://image.ibb.co/dH59vJ/Screenshot_20180617_222748.jpg)
+
+![EditProfileActivity](https://image.ibb.co/dH59vJ/Screenshot_20180617_222748.jpg)
+
 - Screenshot 7 :
-![](https://image.ibb.co/jEQypd/Screenshot_20180617_222814.jpg)
+
+![NearbyCenterActivity](https://image.ibb.co/jEQypd/Screenshot_20180617_222814.jpg)
 
 License
 ----
