@@ -1,10 +1,14 @@
 package com.v1rex.ehope.Activities
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.text.TextUtils
 import android.view.View
 import com.v1rex.ehope.R
@@ -49,11 +53,23 @@ class LoginRegisterActivity : AppCompatActivity() {
 
 
         login_btn.setOnClickListener {
-            login()
+            var isConnected = isOnline()
+            if(isConnected){
+                login()
+            } else if(!isConnected){
+               showPopUp("Sorry but you need to be connected to internet if you wan't to login to your account")
+            }
+
         }
 
         register_btn.setOnClickListener {
-            register()
+            var isConnected = isOnline()
+            if(isConnected){
+                register()
+            } else if(!isConnected){
+                showPopUp("Sorry but you need to be connected to internet if you wan't to register")
+            }
+
         }
     }
 
@@ -175,10 +191,35 @@ class LoginRegisterActivity : AppCompatActivity() {
         return password.length > 4
     }
 
+    fun showPopUp(message : String){
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("Message:")
+        alertDialogBuilder
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Okey",
+                        DialogInterface.OnClickListener { dialog, id ->
+
+                        })
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+
+    }
+
 
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    protected fun isOnline(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        return if (netInfo != null && netInfo.isConnectedOrConnecting) {
+            true
+        } else {
+            false
+        }
     }
 }
