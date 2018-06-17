@@ -92,7 +92,22 @@
                     android:text="@string/register"
                     android:fontFamily="sans-serif-condensed"
                     android:textColor="#fff"/>
+
+
+
+                <TextView
+                    android:id="@+id/already_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/white"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="16dp"/>
             </LinearLayout>
+
+
+
 
 
 

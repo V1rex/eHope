@@ -27,10 +27,24 @@ class LoginRegisterActivity : AppCompatActivity() {
         when(type)
         {
             "login" -> {login_btn.visibility = View.VISIBLE
-                        register_btn.visibility = View.GONE}
+                        register_btn.visibility = View.GONE
+                already_message.setText("Don't have an account ? Register")
+                already_message.setOnClickListener {
+                    val intent = Intent(this, LoginRegisterActivity::class.java)
+                    intent.putExtra("type","register")
+                    startActivity(intent)
+                    finish()
+                }}
 
             "register" ->{register_btn.visibility = View.VISIBLE
-                        login_btn.visibility = View.GONE}
+                        login_btn.visibility = View.GONE
+                already_message.setText("Already have an account ? Login")
+                already_message.setOnClickListener {
+                    val intent = Intent(this, LoginRegisterActivity::class.java)
+                    intent.putExtra("type","login")
+                    startActivity(intent)
+                    finish()
+                }}
         }
 
 
