@@ -20,7 +20,7 @@ https://developers.google.com/maps/documentation/android-sdk/start
 # Setup firebase:
 1. Create an new firebase project 
 2. Add just the google-services.json to /app folder
-3. Enable email authentication method in you firebase 
+3. Enable email authentication method into your firebase project 
 4. Change Realtime Database rules with this : 
 
 ```sh
