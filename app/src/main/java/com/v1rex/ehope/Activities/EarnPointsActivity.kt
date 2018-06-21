@@ -191,7 +191,7 @@ class EarnPointsActivity : AppCompatActivity() {
             mRef.addValueEventListener(valueEventListenerUser)
 
         } else if(!isConnected){
-            message_layout_donations.visibility = View.GONE
+            message_layout_donations.visibility = View.VISIBLE
 
             message_text_donations.setText("Sorry but you need to be connected to internet if you want to add donations")
         }
