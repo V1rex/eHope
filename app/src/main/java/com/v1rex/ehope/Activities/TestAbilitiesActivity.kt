@@ -29,7 +29,6 @@ class TestAbilitiesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_abilities)
 
-
         var userId : String = ""
         var numberOfTest : Int = 0
 
@@ -46,7 +45,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setSupportActionBar(my_toolbar_test)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         my_toolbar_test.setNavigationOnClickListener {
             finish()
@@ -185,6 +184,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
             question_2_layout.visibility = View.VISIBLE
 
 //            number[0] = 100
+
             number[0] = 100
         }
 
@@ -192,6 +192,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
             question_1_layout.visibility = View.GONE
             question_2_layout.visibility = View.VISIBLE
 //            number[0] = 0
+
             number[0] = 0
         }
 
@@ -202,6 +203,8 @@ class TestAbilitiesActivity : AppCompatActivity() {
             question_3_layout.visibility = View.VISIBLE
 
 //            number[1] = 100
+
+
             number[1] = 100
         }
 
@@ -209,6 +212,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
             question_2_layout.visibility = View.GONE
             question_3_layout.visibility = View.VISIBLE
 //            number[1] = 0
+
             number[1] = 0
         }
 
@@ -218,6 +222,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
             question_3_layout.visibility = View.GONE
             question_4_layout.visibility = View.VISIBLE
 //            number[2] = 100
+
             number[2] = 100
         }
 
