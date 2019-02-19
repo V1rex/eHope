@@ -25,6 +25,7 @@ class UserInformationsActivity : AppCompatActivity() {
     var mAuth : FirebaseAuth? = null
     var mDatabase : FirebaseDatabase? = null
     var mRef : DatabaseReference? = null
+    var cal : Calendar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +36,7 @@ class UserInformationsActivity : AppCompatActivity() {
         mRef = mDatabase!!.getReference("Data").child("Users")
 
         mAuth = FirebaseAuth.getInstance()
-        user_date.setOnClickListener {
-            date_picker_user_layout.visibility = View.VISIBLE
-        }
+
 
         finished_date_user.setOnClickListener {
             date_picker_user_layout.visibility = View.GONE

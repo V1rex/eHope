@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.WindowManager
 import com.github.paolorotolo.appintro.AppIntro2
-import com.v1rex.ehope.Fragments.SLideOneFragment
+import com.v1rex.ehope.Fragments.SlideOneFragment
 import com.v1rex.ehope.Fragments.SlideFourFragment
 import com.v1rex.ehope.Fragments.SlideThreeFragment
 import com.v1rex.ehope.Fragments.SlideTwoFragment
@@ -18,7 +18,7 @@ class SliderActivity : AppIntro2() {
         super.onCreate(savedInstanceState)
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        addSlide(SLideOneFragment.newInstance())
+        addSlide(SlideOneFragment.newInstance())
         addSlide(SlideTwoFragment.newInstance())
         addSlide(SlideThreeFragment.newInstance())
         addSlide(SlideFourFragment.newInstance())

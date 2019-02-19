@@ -11,9 +11,7 @@ import android.view.ViewGroup
 import com.v1rex.ehope.R
 
 
-class SLideOneFragment : Fragment() {
-
-
+class SlideOneFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
