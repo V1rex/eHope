@@ -321,40 +321,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/date_picker_user_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="#96000000"
-        android:orientation="vertical">
-        <ImageButton
-            android:id="@+id/finished_date_user"
-            android:layout_gravity="end"
-            android:layout_marginTop="?android:attr/actionBarSize"
-            android:layout_width="32dp"
-            android:visibility="visible"
-            android:layout_height="32dp"
-            android:src="@drawable/accept"
-            android:background="@android:color/transparent"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="56dp"
-            android:orientation="vertical">
-
-            <DatePicker
-                android:id="@+id/date_picker_user"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                />
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </RelativeLayout>

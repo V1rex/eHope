@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_user_informations.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.R.string.cancel
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -38,12 +39,28 @@ class UserInformationsActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
 
-        finished_date_user.setOnClickListener {
-            date_picker_user_layout.visibility = View.GONE
-        }
-
         save_user.setOnClickListener {
             sendInformations()
+        }
+
+        cal = Calendar.getInstance()
+
+        val dateSetLisener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+            cal!!.set(Calendar.YEAR, year)
+            cal!!.set(Calendar.MONTH, monthOfYear)
+            cal!!.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val myFormat = "dd.MM.yyyy" // mention the format you need
+            val sdf : String = SimpleDateFormat(myFormat, Locale.US).format(cal!!.time)
+
+            birth_day_edit_text.setText(sdf)
+        }
+
+        birth_day_edit_text.setOnClickListener{
+            DatePickerDialog(this, dateSetLisener,
+                    cal!!.get(Calendar.YEAR),
+                    cal!!.get(Calendar.MONTH),
+                    cal!!.get(Calendar.DAY_OF_MONTH)).show()
         }
 
     }
@@ -61,15 +78,10 @@ class UserInformationsActivity : AppCompatActivity() {
         var phoneNumber = user_phone.text.toString()
         if(TextUtils.isEmpty(phoneNumber)) cancel = true  else cancel = false
 
-        val day = date_picker_user.getDayOfMonth()
-        val month = date_picker_user.getMonth()
-        val year = date_picker_user.getYear()
 
-        val calendar = Calendar.getInstance()
-        calendar.set(year, month, day)
-
-        val date = SimpleDateFormat("yyyy.MM.dd")
-        val dateAndTime = date.format(calendar.getTime())
+        val date = SimpleDateFormat("dd.MM.yyyy")
+        val dateAndTime = date.format(cal!!.getTime())
+        if(TextUtils.isEmpty(dateAndTime)) cancel = true else cancel = false
 
 
         var weightString = user_weight.text.toString()
