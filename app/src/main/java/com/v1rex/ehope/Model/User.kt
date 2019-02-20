@@ -6,8 +6,51 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 @Keep
-class User constructor(var mName : String = "", var mPhoneNumber : String = "", var mBirthday : String = "",var  mWeight: Int = 0,var  mSexe : String = "", var mHeroType : String = "" , var mPoints: Int = 0, var mNumberOfTest: Int = 0 ,var mNumberOfDonations : Int = 0,var mUserId : String? = "") {
+class User  {
+
+    var mName : String = ""
+    var mPhoneNumber : String = ""
+    var mBirthday : String = ""
+    var  mWeight: Int = 0
+    var  mSexe : String = ""
+    var mHeroType : String = ""
+    var mPoints: Int = 0
+    var mNumberOfTest: Int = 0
+    var mNumberOfDonations : Int = 0
+    var mPhotoUrl : String = ""
+    var mUserId : String? = ""
+
+    constructor(){
+
+    }
 
 
+
+    constructor(mName: String, mPhoneNumber: String, mBirthday: String, mWeight: Int, mSexe: String, mHeroType: String, mPoints: Int, mNumberOfTest: Int, mNumberOfDonations: Int, mUserId: String?) {
+        this.mName = mName
+        this.mPhoneNumber = mPhoneNumber
+        this.mBirthday = mBirthday
+        this.mWeight = mWeight
+        this.mSexe = mSexe
+        this.mHeroType = mHeroType
+        this.mPoints = mPoints
+        this.mNumberOfTest = mNumberOfTest
+        this.mNumberOfDonations = mNumberOfDonations
+        this.mUserId = mUserId
+    }
+
+    constructor(mName: String, mPhoneNumber: String, mBirthday: String, mWeight: Int, mSexe: String, mHeroType: String, mPoints: Int, mNumberOfTest: Int, mNumberOfDonations: Int, mPhotoUrl: String, mUserId: String?) {
+        this.mName = mName
+        this.mPhoneNumber = mPhoneNumber
+        this.mBirthday = mBirthday
+        this.mWeight = mWeight
+        this.mSexe = mSexe
+        this.mHeroType = mHeroType
+        this.mPoints = mPoints
+        this.mNumberOfTest = mNumberOfTest
+        this.mNumberOfDonations = mNumberOfDonations
+        this.mPhotoUrl = mPhotoUrl
+        this.mUserId = mUserId
+    }
 
 }
