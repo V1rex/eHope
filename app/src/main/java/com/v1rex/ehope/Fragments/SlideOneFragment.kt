@@ -48,7 +48,7 @@ class SlideOneFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =
-                SLideOneFragment().apply {
+                SlideOneFragment().apply {
                     arguments = Bundle().apply {
 
                     }
