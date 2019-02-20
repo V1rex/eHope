@@ -17,6 +17,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
 import android.net.Uri
 import android.support.v7.app.AlertDialog
 import android.view.WindowManager
@@ -27,6 +28,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.v1rex.ehope.Utilities.ImagePicker
+import java.io.ByteArrayOutputStream
 import java.io.IOException
 
 
@@ -39,8 +41,11 @@ class UserInformationsActivity : AppCompatActivity() {
     private val storage : FirebaseStorage = FirebaseStorage.getInstance()
     private val storageReference : StorageReference = storage.reference
 
+    private val REFERENCE_PROFILE_PHOTO : String = "profileImages/"
+
     private val PICK_IMAGE_REQUEST : Int = 71
     private var filePath : Uri? = null
+    private var bmpImage : Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +108,7 @@ class UserInformationsActivity : AppCompatActivity() {
                 set_image_profile_linearlayout.visibility = View.GONE
                 circle_image_linearlayout.visibility = View.VISIBLE
                 var bmp = ImagePicker.getImageFromResult(this , resultCode, data)
+                bmpImage = bmp
                 Glide.with(this).load(bmp).fitCenter().into(circle_image_uploaded_view)
 
             } catch (e: IOException) {
@@ -157,8 +163,18 @@ class UserInformationsActivity : AppCompatActivity() {
         }
 
         if(!cancel){
+
+            var profilePhotoUrl : String = ""
+            if(bmpImage != null){
+                var referrencePhoto : StorageReference = storageReference.child(REFERENCE_PROFILE_PHOTO + mAuth!!.uid.toString())
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                bmpImage!!.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream)
+                val data = byteArrayOutputStream.toByteArray()
+                profilePhotoUrl = referrencePhoto.downloadUrl.toString()
+                referrencePhoto.putBytes(data)
+            }
             var userId :  String? = mAuth!!.uid
-            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0,0,0, userId)
+            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0,0,0,profilePhotoUrl, userId)
 
             var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
 
