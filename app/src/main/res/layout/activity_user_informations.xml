@@ -35,13 +35,15 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/set_image_profile_linearlayout"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="42dp"
                     android:background="@drawable/circle"
-                    android:backgroundTint="@android:color/white">
+                    android:backgroundTint="@android:color/white"
+                    >
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -50,6 +52,28 @@
                         android:src="@drawable/camera" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/circle_image_linearlayout"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="42dp"
+                    android:visibility="gone">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circle_image_uploaded_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        app:civ_border_color="@android:color/white"
+                        app:civ_border_width="2dp"
+                        />
+
+                </LinearLayout>
+
+
 
 
             </RelativeLayout>

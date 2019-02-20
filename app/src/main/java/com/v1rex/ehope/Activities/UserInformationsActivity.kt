@@ -6,20 +6,28 @@ import android.text.TextUtils
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import com.v1rex.ehope.Model.User
-import com.v1rex.ehope.R
 import kotlinx.android.synthetic.main.activity_user_informations.*
 import java.text.SimpleDateFormat
 import java.util.*
+import com.v1rex.ehope.R
 import android.R.string.cancel
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.support.v7.app.AlertDialog
 import android.view.WindowManager
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.v1rex.ehope.Utilities.ImagePicker
+import java.io.IOException
 
 
 class UserInformationsActivity : AppCompatActivity() {
@@ -27,6 +35,12 @@ class UserInformationsActivity : AppCompatActivity() {
     var mDatabase : FirebaseDatabase? = null
     var mRef : DatabaseReference? = null
     var cal : Calendar? = null
+
+    private val storage : FirebaseStorage = FirebaseStorage.getInstance()
+    private val storageReference : StorageReference = storage.reference
+
+    private val PICK_IMAGE_REQUEST : Int = 71
+    private var filePath : Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +52,24 @@ class UserInformationsActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
+        fun chooseImage(){
+            var intent : Intent  = Intent()
+            intent.setType("image/*")
+            intent.setAction(Intent.ACTION_GET_CONTENT)
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
+        }
+
 
         save_user.setOnClickListener {
             sendInformations()
+        }
+
+        set_image_profile_linearlayout.setOnClickListener {
+
+        }
+
+        circle_image_uploaded_view.setOnClickListener {
+
         }
 
         cal = Calendar.getInstance()
@@ -63,6 +92,22 @@ class UserInformationsActivity : AppCompatActivity() {
                     cal!!.get(Calendar.DAY_OF_MONTH)).show()
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode === PICK_IMAGE_REQUEST && resultCode === Activity.RESULT_OK
+                && data != null && data.data != null) {
+            filePath = data.data
+            try {
+                var bmp = ImagePicker.getImageFromResult(this , resultCode, data)
+                Glide.with(this).load(bmp).fitCenter().into(circle_image_uploaded_view)
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+        }
     }
 
     override fun onBackPressed() {
