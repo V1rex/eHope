@@ -65,11 +65,11 @@ class UserInformationsActivity : AppCompatActivity() {
         }
 
         set_image_profile_linearlayout.setOnClickListener {
-
+            chooseImage()
         }
 
         circle_image_uploaded_view.setOnClickListener {
-
+            chooseImage()
         }
 
         cal = Calendar.getInstance()
@@ -100,6 +100,8 @@ class UserInformationsActivity : AppCompatActivity() {
                 && data != null && data.data != null) {
             filePath = data.data
             try {
+                set_image_profile_linearlayout.visibility = View.GONE
+                circle_image_linearlayout.visibility = View.VISIBLE
                 var bmp = ImagePicker.getImageFromResult(this , resultCode, data)
                 Glide.with(this).load(bmp).fitCenter().into(circle_image_uploaded_view)
 
