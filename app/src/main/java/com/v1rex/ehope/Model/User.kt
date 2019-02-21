@@ -17,7 +17,7 @@ class User  {
     var mPoints: Int = 0
     var mNumberOfTest: Int = 0
     var mNumberOfDonations : Int = 0
-    var mPhotoUrl : String = ""
+    var mPhotoExist : String = ""
     var mUserId : String? = ""
 
     constructor(){
@@ -49,7 +49,7 @@ class User  {
         this.mPoints = mPoints
         this.mNumberOfTest = mNumberOfTest
         this.mNumberOfDonations = mNumberOfDonations
-        this.mPhotoUrl = mPhotoUrl
+        this.mPhotoExist = mPhotoUrl
         this.mUserId = mUserId
     }
 

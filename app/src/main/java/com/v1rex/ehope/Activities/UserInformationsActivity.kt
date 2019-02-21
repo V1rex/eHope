@@ -45,6 +45,11 @@ class UserInformationsActivity : AppCompatActivity() {
 
     private val REFERENCE_PROFILE_PHOTO : String = "profileImages/"
 
+    private val IMAGE_PHOTO_FIREBASE : String = "firebase"
+
+    private val IMAGE_PHOTO_MAN : String = "man"
+
+
     private val PICK_IMAGE_REQUEST : Int = 71
     private var filePath : Uri? = null
     private var bmpImage : Bitmap? = null
@@ -124,6 +129,23 @@ class UserInformationsActivity : AppCompatActivity() {
 
     }
 
+    fun sendInformationsOfUser(userInformations : User){
+        var userId :  String? = mAuth!!.uid
+
+        var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+
+
+        var editor : SharedPreferences.Editor = sharedPref.edit()
+        editor.putString("username",userInformations.mName)
+        editor.putString("userHeroType", userInformations.mHeroType)
+        editor.putString("userPoint",userInformations.mPoints.toString())
+        editor.apply()
+
+        var userId2 = userInformations.mUserId.toString()
+        var mRef2 = mRef?.child(userId2)
+        mRef2?.setValue(userInformations)
+    }
+
     fun sendInformations(){
         var cancel = false
 
@@ -166,31 +188,20 @@ class UserInformationsActivity : AppCompatActivity() {
 
         if(!cancel){
 
-            var profilePhotoUrl : String = ""
+            var profilePhotoExist : String = IMAGE_PHOTO_MAN
             if(bmpImage != null){
+                profilePhotoExist = IMAGE_PHOTO_FIREBASE
                 var referrencePhoto : StorageReference = storageReference.child(REFERENCE_PROFILE_PHOTO + mAuth!!.uid.toString())
                 val byteArrayOutputStream = ByteArrayOutputStream()
                 bmpImage!!.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream)
                 val data = byteArrayOutputStream.toByteArray()
-                referrencePhoto.putBytes(data).addOnSuccessListener {
-                    profilePhotoUrl = it.storage.downloadUrl.toString()
-                }
+                referrencePhoto.putBytes(data)
             }
+
             var userId :  String? = mAuth!!.uid
-            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0,0,0,profilePhotoUrl, userId)
+            var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0,0,0,profilePhotoExist, userId)
+            sendInformationsOfUser(userInformations)
 
-            var sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-
-
-            var editor : SharedPreferences.Editor = sharedPref.edit()
-            editor.putString("username",userInformations.mName)
-            editor.putString("userHeroType", userInformations.mHeroType)
-            editor.putString("userPoint",userInformations.mPoints.toString())
-            editor.apply()
-
-            var userId2 = userInformations.mUserId.toString()
-            var mRef2 = mRef?.child(userId2)
-            mRef2?.setValue(userInformations)
             startActivity(Intent(this, ProfileActivity::class.java))
         } else {
             val builder1 = AlertDialog.Builder(this)
