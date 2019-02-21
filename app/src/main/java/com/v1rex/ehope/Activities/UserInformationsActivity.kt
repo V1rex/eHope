@@ -25,8 +25,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import com.v1rex.ehope.Utilities.ImagePicker
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -170,8 +172,9 @@ class UserInformationsActivity : AppCompatActivity() {
                 val byteArrayOutputStream = ByteArrayOutputStream()
                 bmpImage!!.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream)
                 val data = byteArrayOutputStream.toByteArray()
-                profilePhotoUrl = referrencePhoto.downloadUrl.toString()
-                referrencePhoto.putBytes(data)
+                referrencePhoto.putBytes(data).addOnSuccessListener {
+                    profilePhotoUrl = it.storage.downloadUrl.toString()
+                }
             }
             var userId :  String? = mAuth!!.uid
             var userInformations = User(name, phoneNumber, dateAndTime, weight, sexe,"beginner", 0,0,0,profilePhotoUrl, userId)
