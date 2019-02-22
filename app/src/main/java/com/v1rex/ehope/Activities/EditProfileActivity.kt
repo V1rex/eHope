@@ -12,12 +12,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.v1rex.ehope.Model.User
 import com.v1rex.ehope.R
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 
 class EditProfileActivity : AppCompatActivity() {
     var mDatabase : FirebaseDatabase? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -66,7 +69,7 @@ class EditProfileActivity : AppCompatActivity() {
 
 
             if(!cancel){
-                var user2 = User(userNameEdited, userPhoneEdited, user!!.mBirthday, weight, user!!.mSexe , user!!.mHeroType , user!!.mPoints, user!!.mNumberOfTest, user!!.mNumberOfDonations , mAuth.uid.toString())
+                var user2 = User(userNameEdited, userPhoneEdited, user!!.mBirthday, weight, user!!.mSexe , user!!.mHeroType , user!!.mPoints, user!!.mNumberOfTest, user!!.mNumberOfDonations, user!!.mPhotoExist, mAuth.uid.toString())
                 sendData(user2)
 
 
