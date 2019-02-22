@@ -27,10 +27,22 @@ import android.net.ConnectivityManager
 import android.R.string.cancel
 import android.content.DialogInterface
 import android.support.v7.app.AlertDialog
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 
 class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     var mAuth : FirebaseAuth? = null
+
+    private val storage : FirebaseStorage = FirebaseStorage.getInstance()
+    private val storageReference : StorageReference = storage.reference
+
+    private val REFERENCE_PROFILE_PHOTO : String = "profileImages/"
+
+    private val IMAGE_PHOTO_FIREBASE : String = "firebase"
+
+    private val IMAGE_PHOTO_MAN : String = "man"
 
 
 
@@ -78,6 +90,15 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
                     editor.putString("userPoint",user!!.mPoints.toString())
                     editor.apply()
 
+                    if(user.mPhotoExist == IMAGE_PHOTO_FIREBASE){
+                        var referrencePhoto : StorageReference = storageReference.child(REFERENCE_PROFILE_PHOTO + userId)
+                        Glide.with(baseContext).load(referrencePhoto)
+                                .placeholder(R.drawable.background2)
+                                .fitCenter()
+                                .into(profile_image)
+                    }
+
+
                     changeUi()
 
                 }
@@ -114,13 +135,10 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         edit_profile_icon.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
-
-
         }
 
         see_points.setOnClickListener {
             startActivity(Intent(this, UserDonationsActivity::class.java))
-
         }
 
 
@@ -146,7 +164,6 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
     }
-
 
 
     fun logout(){
