@@ -68,8 +68,13 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         mAuth = FirebaseAuth.getInstance()
 
         val userId = mAuth!!.uid.toString()
+        var referrencePhoto : StorageReference = storageReference.child(REFERENCE_PROFILE_PHOTO + userId)
 
 
+        Glide.with(baseContext).load(referrencePhoto)
+                .placeholder(R.drawable.background2)
+                .fitCenter()
+                .into(profile_image)
 
         var mDatabase : FirebaseDatabase? = FirebaseDatabase.getInstance()
         var mRef = mDatabase!!.getReference("Data").child("Users").child(userId)
@@ -91,11 +96,11 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
                     editor.apply()
 
                     if(user.mPhotoExist == IMAGE_PHOTO_FIREBASE){
-                        var referrencePhoto : StorageReference = storageReference.child(REFERENCE_PROFILE_PHOTO + userId)
                         Glide.with(baseContext).load(referrencePhoto)
                                 .placeholder(R.drawable.background2)
                                 .fitCenter()
                                 .into(profile_image)
+
                     }
 
 
@@ -112,6 +117,7 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
         }
         else if (!isConnected){
             Toast.makeText(this, "You need to be connected to internet !", Toast.LENGTH_SHORT).show()
+
 
         }
         changeUi()
