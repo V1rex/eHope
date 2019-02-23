@@ -14,7 +14,7 @@
 An Android App coded fully with Kotlin that uses Firebase as Backend, for helping people and encouraging them to donate their blood 
 
 ## General info
-eHope is an app where users can learn about blood donations, test abilities ( see if he can do a blood donations ) , see near blood donations centers . In general you can be a hero .  
+eHope is an app where users can learn about blood donations, test abilities ( see if he can do a blood donations ) , see near blood donations centers . In general you can be a hero with this app .  
 
 ## Screenshots
 ![Screenshot 1](https://i.imgur.com/21kCvcs.png)
