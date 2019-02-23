@@ -133,18 +133,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="Earn"
+                        android:text="Earn Points"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="16dp" />
+                        android:textSize="14sp" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_plus_one_black_24dp" />
 
                 </LinearLayout>
 
