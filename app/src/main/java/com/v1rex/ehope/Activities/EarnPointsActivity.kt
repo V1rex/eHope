@@ -121,17 +121,20 @@ class EarnPointsActivity : AppCompatActivity() {
 
                     val calendarToPassCal = Calendar.getInstance()
                     val dateToPassTest = SimpleDateFormat("yyyy.MM.dd")
-                    calendarToPassCal.time = dateToPassTest.parse(dateToPassTestString)
+                    if(dateToPassTestString != ""){
+                        calendarToPassCal.time = dateToPassTest.parse(dateToPassTestString)
+                    }
+
 
                     if (numberDonations == 0 && numberTest == 0 && dateToPassTestString == ""){
                         message_layout_donations.visibility = View.VISIBLE
 
-                        message_text_donations.setText("Sorry but you have test your abilities before add a donations ")
+                        message_text_donations.setText("Sorry but you have test your abilities before adding a new donations and earn points")
                     }
                     else if(numberDonations > 0 && numberTest > 0 && numberTest == numberDonations ){
                         message_layout_donations.visibility = View.VISIBLE
 
-                        message_text_donations.setText("Sorry but you have to wait till to test your abilities before add a donations")
+                        message_text_donations.setText("Sorry but you have test your abilities before adding a new donations and earn points")
                     }
                     else if(numberTest > numberDonations){
 
