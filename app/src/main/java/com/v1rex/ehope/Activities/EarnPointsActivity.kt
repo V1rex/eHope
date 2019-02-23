@@ -16,7 +16,6 @@ import com.v1rex.ehope.Model.Test
 import com.v1rex.ehope.Model.User
 import com.v1rex.ehope.R
 import kotlinx.android.synthetic.main.activity_earn_points.*
-import kotlinx.android.synthetic.main.activity_test_abilities.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,20 +35,6 @@ class EarnPointsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        var userId : String = ""
-        var numberOfTest : Int = 0
-        var numberOfDonations : Int = 0
-
-        fun isOnline(): Boolean {
-            val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val netInfo = cm.activeNetworkInfo
-            return if (netInfo != null && netInfo.isConnectedOrConnecting) {
-                true
-            } else {
-                false
-            }
-        }
-
 
         my_toolbar_earn.setNavigationOnClickListener {
             finish()
@@ -62,7 +47,6 @@ class EarnPointsActivity : AppCompatActivity() {
         finished_time_earn.setOnClickListener {
             time_picker_earn_layout.visibility = View.GONE
         }
-
 
         edit_date.setOnClickListener {
             date_picker_earn_layout.visibility = View.VISIBLE
@@ -82,26 +66,40 @@ class EarnPointsActivity : AppCompatActivity() {
 
             val calendar = Calendar.getInstance()
             calendar.set(year, month, day, hour, minute)
+            val calendarTimeToDonate = calendar
+            calendarTimeToDonate.add(Calendar.MONTH, 1)
 
             val date = SimpleDateFormat("yyyy.MM.dd 'at' hh:mm")
             dateTime = date.format(calendar.getTime())
 
+            val dateToPassTest = SimpleDateFormat("yyyy.MM.dd")
+            val dateTimeToPassTest = date.format(calendarTimeToDonate.getTime())
+
+
+
+            var numberTestIndex = (user!!.mNumberOfTest) - 1
 
             var mDatabase = FirebaseDatabase.getInstance()
+
             var mReference = mDatabase.getReference("Data").child("Users").child(user!!.mUserId.toString())
+            var mReferenceTest = mDatabase.getReference("Data").child("Test").child(user!!.mUserId.toString()).child(numberTestIndex.toString())
+
 
             var user2 = user
 
             user2!!.mNumberOfDonations += 1
             user2!!.mPoints += 100
+            user2!!.dateToPassTest = dateTimeToPassTest
 
             mReference.setValue(user2)
 
+
+
             var donation = Donation(user!!.mNumberOfTest - 1, dateTime, user!!.mUserId.toString())
 
-            var mReference2 = mDatabase.getReference("Data").child("Donations").child(user!!.mUserId.toString()).child((user2!!.mNumberOfTest - 1).toString())
+            var mReferenceDonation = mDatabase.getReference("Data").child("Donations").child(user!!.mUserId.toString()).child((user2!!.mNumberOfTest - 1).toString())
+            mReferenceDonation.setValue(donation)
 
-            mReference2.setValue(donation)
 
             finish()
         }
@@ -120,18 +118,23 @@ class EarnPointsActivity : AppCompatActivity() {
                     user = dataSnapshot.getValue(User::class.java)
                     var numberDonations = user!!.mNumberOfDonations
                     var numberTest = user!!.mNumberOfTest
+                    var dateToPassTestString = user!!.dateToPassTest
 
+                    val calendarToPassCal = Calendar.getInstance()
+                    val dateToPassTest = SimpleDateFormat("yyyy.MM.dd")
+                    calendarToPassCal.time = dateToPassTest.parse(dateToPassTestString)
 
-
-                    if (numberDonations == 0 && numberTest == 0){
+                    if (numberDonations == 0 && numberTest == 0 && dateToPassTestString == ""){
                         message_layout_donations.visibility = View.VISIBLE
 
                         message_text_donations.setText("Sorry but you have test your abilities before add a donations ")
-                    } else if(numberDonations > 0 && numberTest > 0 && numberTest == numberDonations){
+                    }
+                    else if(numberDonations > 0 && numberTest > 0 && numberTest == numberDonations ){
                         message_layout_donations.visibility = View.VISIBLE
 
-                        message_text_donations.setText("Sorry but you have test your abilities before add a donations")
-                    } else if(numberTest > numberDonations){
+                        message_text_donations.setText("Sorry but you have to wait till to test your abilities before add a donations")
+                    }
+                    else if(numberTest > numberDonations){
 
                         var mRef2 = mDatabase.getReference("Data").child("Test").child(user!!.mUserId.toString()).child((user!!.mNumberOfTest - 1).toString())
 
@@ -147,17 +150,30 @@ class EarnPointsActivity : AppCompatActivity() {
                                     message_layout_donations.visibility = View.VISIBLE
 
                                     message_text_donations.setText("Sorry but you cannot donate your blood")
-                                } else{
+                                }
+                                else{
+                                    var date = Date()
+                                    val currentCalendar = Calendar.getInstance()
+                                    currentCalendar.time = date
                                     if(result == false){
-                                        message_layout_donations.visibility = View.VISIBLE
+                                        if (currentCalendar.after(calendarToPassCal)){
+                                            message_layout_donations.visibility = View.VISIBLE
+                                            message_text_donations.setText("Sorry but you have to wait till: $dateToPassTestString to re-pass the test and donate your blood ")
+                                        }else if (currentCalendar.equals(calendarToPassCal)){
+                                            message_layout_donations.visibility = View.GONE
 
-                                        message_text_donations.setText("Sorry but you have to $dateToDonate ")
+                                            add_donations_layout.visibility = View.VISIBLE
+                                        }else if (currentCalendar.before(calendarToPassCal)){
+                                            message_layout_donations.visibility = View.GONE
+
+                                            add_donations_layout.visibility = View.VISIBLE
+                                        }
+
                                     }
-                                    else{
+                                    else if (result == true ){
                                         message_layout_donations.visibility = View.GONE
 
                                         add_donations_layout.visibility = View.VISIBLE
-
                                     }
 
                                     mRef2.removeEventListener(this)
@@ -176,28 +192,33 @@ class EarnPointsActivity : AppCompatActivity() {
 
 
 
-
-
                     mRef2.addValueEventListener(valueEventListenerTest)
 
                     }
 
                 }
-
                 override fun onCancelled(p0: DatabaseError) {
 
                 }
             }
             mRef.addValueEventListener(valueEventListenerUser)
 
-        } else if(!isConnected){
+        }
+        else if(!isConnected){
             message_layout_donations.visibility = View.VISIBLE
 
             message_text_donations.setText("Sorry but you need to be connected to internet if you want to add donations")
         }
 
+    }
 
-
-
+    fun isOnline(): Boolean {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val netInfo = cm.activeNetworkInfo
+        return if (netInfo != null && netInfo.isConnectedOrConnecting) {
+            true
+        } else {
+            false
+        }
     }
 }

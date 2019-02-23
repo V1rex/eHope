@@ -18,6 +18,7 @@ class User  {
     var mNumberOfTest: Int = 0
     var mNumberOfDonations : Int = 0
     var mPhotoExist : String = ""
+    var dateToPassTest : String = ""
     var mUserId : String? = ""
 
     constructor(){
