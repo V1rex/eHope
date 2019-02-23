@@ -67,7 +67,7 @@ class EarnPointsActivity : AppCompatActivity() {
             val calendar = Calendar.getInstance()
             calendar.set(year, month, day, hour, minute)
             val calendarTimeToDonate = calendar
-            calendarTimeToDonate.add(Calendar.MONTH, 1)
+            calendarTimeToDonate.add(Calendar.MONTH, 6)
 
             val date = SimpleDateFormat("yyyy.MM.dd 'at' hh:mm")
             dateTime = date.format(calendar.getTime())

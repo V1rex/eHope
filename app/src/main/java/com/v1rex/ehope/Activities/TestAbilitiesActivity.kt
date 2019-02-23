@@ -79,7 +79,10 @@ class TestAbilitiesActivity : AppCompatActivity() {
                     val  calendarDateToWait = user!!.dateToPassTest
                     val cal = Calendar.getInstance()
                     var simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
-                    cal.time = simpleDateFormat.parse(calendarDateToWait)
+
+                    if(calendarDateToWait != ""){
+                        cal.time = simpleDateFormat.parse(calendarDateToWait)
+                    }
 
                     var date = Date()
                     val currentCalendar = Calendar.getInstance()
