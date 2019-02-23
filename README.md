@@ -1,17 +1,41 @@
 # eHope
 
-![app icon](https://image.ibb.co/dQVnhy/Screenshot_20180617_222719.jpg)
+![App Slogon](https://i.imgur.com/SQA8xXR.png)
+
+## Table of contents
+* [General info](#general-info)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Features](#features)
+* [Setup](#setup)
+* [Google Maps API](#maps)
+* [Code examples in the app](#code-examples-in-the-app)
 
 An Android App coded fully with Kotlin that uses Firebase as Backend, for helping people and encouraging them to donate their blood 
 
-App features : 
+## General info
+eHope is an app where users can learn about blood donations, test abilities ( see if he can do a blood donations ) , see near blood donations centers . In general you can be a hero .  
 
-  - Login / Register from firebase 
-  - Logout from app in Firebase account
-  - Use Google Maps API for showing nearby blood center (still working on it).
-  - Calculating if the user can donate his blood.
-  - Adding new blood donation to firebase realtime database . 
-  - Settings page for Informations about the blood donor . 
+## Screenshots
+![Screenshot 1](https://i.imgur.com/21kCvcs.png)
+
+## Technologies
+* This apps uses firebase as backend service for the app .
+
+## Features
+* Adding donations that user have done 
+* Uploading user profile photo 
+* Testing user ability of donating blood
+* See near blood donations center (still not developed) 
+* Get informations about blood donations 
+
+## Code examples in the app 
+This app show many codes example in kotlin on :
+* Login / Register from firebase auth .  
+* Uploading profile photo of user in Firebase storage . 
+* Get a list of data and updating it in firebase realtime database . 
+* Handiling google maps API . 
+* Retrieving photos from firebase storage using Glide Library 
 
 # Google Maps API:
 For the google maps API you need to add xml value file to values folder with your google maps API key to use maps in the app for more informations visit : 
@@ -20,7 +44,7 @@ https://developers.google.com/maps/documentation/android-sdk/start
 # Setup firebase:
 1. Create an new firebase project 
 2. Add just the google-services.json to /app folder
-3. Enable email authentication method into your firebase project 
+3. Enable email authentication method in your firebase project
 4. Change Realtime Database rules with this : 
 
 ```sh
@@ -31,38 +55,6 @@ https://developers.google.com/maps/documentation/android-sdk/start
   }
 }
 ```
-
-
-
-# Screenshots!
-- Screenshot 1 :
-
-![MainActivity](https://image.ibb.co/jnQbaJ/Screenshot_20180617_230049.jpg)
-
-- Screenshot 2 :
-
-![SlideActivity](https://image.ibb.co/h45W9d/Screenshot_20180617_230052.jpg)
-
-- Screenshot 3 :
-
-![LoginRegisterActivity](https://image.ibb.co/eGtwaJ/Screenshot_20180617_230057.jpg)
-
-- Screenshot 4 :
-
-![ProfileActivity](https://image.ibb.co/guiJpd/Screenshot_20180617_222723.jpg)
-
-- Screenshot 5 :
-
-![SlidingMenu](https://image.ibb.co/jX59vJ/Screenshot_20180617_222734.jpg)
-
-- Screenshot 6 :
-
-![EditProfileActivity](https://image.ibb.co/dH59vJ/Screenshot_20180617_222748.jpg)
-
-- Screenshot 7 :
-
-![NearbyCenterActivity](https://image.ibb.co/jEQypd/Screenshot_20180617_222814.jpg)
-
 License
 ----
 
