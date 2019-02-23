@@ -73,7 +73,7 @@ class EarnPointsActivity : AppCompatActivity() {
             dateTime = date.format(calendar.getTime())
 
             val dateToPassTest = SimpleDateFormat("yyyy.MM.dd")
-            val dateTimeToPassTest = date.format(calendarTimeToDonate.getTime())
+            val dateTimeToPassTest = dateToPassTest.format(calendarTimeToDonate.getTime())
 
 
 
@@ -125,7 +125,6 @@ class EarnPointsActivity : AppCompatActivity() {
                         calendarToPassCal.time = dateToPassTest.parse(dateToPassTestString)
                     }
 
-
                     if (numberDonations == 0 && numberTest == 0 && dateToPassTestString == ""){
                         message_layout_donations.visibility = View.VISIBLE
 
@@ -158,14 +157,14 @@ class EarnPointsActivity : AppCompatActivity() {
                                     val currentCalendar = Calendar.getInstance()
                                     currentCalendar.time = date
                                     if(result == false){
-                                        if (currentCalendar.after(calendarToPassCal)){
+                                        if (currentCalendar.before(calendarToPassCal)){
                                             message_layout_donations.visibility = View.VISIBLE
                                             message_text_donations.setText("Sorry but you have to wait till: $dateToPassTestString to re-pass the test and donate your blood ")
                                         }else if (currentCalendar.equals(calendarToPassCal) ){
                                             message_layout_donations.visibility = View.GONE
 
                                             add_donations_layout.visibility = View.VISIBLE
-                                        }else if (currentCalendar.before(calendarToPassCal)){
+                                        }else if (currentCalendar.after(calendarToPassCal)){
                                             message_layout_donations.visibility = View.GONE
 
                                             add_donations_layout.visibility = View.VISIBLE

@@ -110,7 +110,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
                                         }
 
                                         else if(user!!.mNumberOfTest == user!!.mNumberOfDonations){
-                                            if(currentCalendar.before(cal) or currentCalendar.equals(cal)){
+                                            if(currentCalendar.after(cal) or currentCalendar.equals(cal)){
                                                 question_1_layout.visibility = View.VISIBLE
                                                 message_layout.visibility = View.GONE
                                             } else{
