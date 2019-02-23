@@ -26,6 +26,7 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.R.string.cancel
 import android.content.DialogInterface
+import android.net.Uri
 import android.support.v7.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
@@ -44,6 +45,8 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
     private val IMAGE_PHOTO_MAN : String = "man"
 
+    private val SENSIBILISATION_WEB_STRING : String = "https://www.webmd.com/a-to-z-guides/what-to-expect-when-you-give-blood#1"
+
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -51,7 +54,10 @@ class ProfileActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelec
 
         when(id){
             R.id.test_abilities -> startActivity(Intent(this, TestAbilitiesActivity::class.java))
-            R.id.sensibilisation -> startActivity(Intent(this, SensibilisationActivity::class.java))
+            R.id.sensibilisation -> {
+                var browserIntent = Intent(Intent.ACTION_VIEW , Uri.parse(SENSIBILISATION_WEB_STRING))
+                startActivity(browserIntent)
+            }
             R.id.nearby_center -> startActivity(Intent(this, NearbyCenterActivity::class.java))
             R.id.logout -> { logout() }
         }
