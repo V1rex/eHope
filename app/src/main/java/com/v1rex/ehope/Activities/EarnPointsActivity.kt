@@ -82,7 +82,6 @@ class EarnPointsActivity : AppCompatActivity() {
             var mDatabase = FirebaseDatabase.getInstance()
 
             var mReference = mDatabase.getReference("Data").child("Users").child(user!!.mUserId.toString())
-            var mReferenceTest = mDatabase.getReference("Data").child("Test").child(user!!.mUserId.toString()).child(numberTestIndex.toString())
 
 
             var user2 = user
@@ -159,7 +158,7 @@ class EarnPointsActivity : AppCompatActivity() {
                                         if (currentCalendar.after(calendarToPassCal)){
                                             message_layout_donations.visibility = View.VISIBLE
                                             message_text_donations.setText("Sorry but you have to wait till: $dateToPassTestString to re-pass the test and donate your blood ")
-                                        }else if (currentCalendar.equals(calendarToPassCal)){
+                                        }else if (currentCalendar.equals(calendarToPassCal) ){
                                             message_layout_donations.visibility = View.GONE
 
                                             add_donations_layout.visibility = View.VISIBLE

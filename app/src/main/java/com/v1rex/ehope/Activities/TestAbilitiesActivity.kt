@@ -16,6 +16,8 @@ import com.v1rex.ehope.Model.Test
 import com.v1rex.ehope.Model.User
 import com.v1rex.ehope.R
 import kotlinx.android.synthetic.main.activity_test_abilities.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class TestAbilitiesActivity : AppCompatActivity() {
@@ -25,6 +27,7 @@ class TestAbilitiesActivity : AppCompatActivity() {
     var mRef : DatabaseReference? = null
     var valueEventListener : ValueEventListener? = null
     var valueEventListenerUser : ValueEventListener? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_abilities)
@@ -73,6 +76,16 @@ class TestAbilitiesActivity : AppCompatActivity() {
                     var number = numberOfTest
 
 
+                    val  calendarDateToWait = user!!.dateToPassTest
+                    val cal = Calendar.getInstance()
+                    var simpleDateFormat = SimpleDateFormat("yyyy.MM.dd")
+                    cal.time = simpleDateFormat.parse(calendarDateToWait)
+
+                    var date = Date()
+                    val currentCalendar = Calendar.getInstance()
+                    currentCalendar.time = date
+
+
                     if(number == 0){
                         question_1_layout.visibility = View.VISIBLE
                         message_layout.visibility = View.GONE
@@ -87,22 +100,27 @@ class TestAbilitiesActivity : AppCompatActivity() {
                                 test = dataSnapshot.getValue(Test::class.java)
 
                                 if(test!!.mInfinity  == false){
-                                    if(mResult){
+                                    if(test!!.mResult){
                                         if(user!!.mNumberOfTest > user!!.mNumberOfDonations ){
                                             question_1_layout.visibility = View.GONE
                                             showPopUp("You have to make a blood donation and add it to your blood donation history to earn points")
-
                                         }
 
                                         else if(user!!.mNumberOfTest == user!!.mNumberOfDonations){
-                                            question_1_layout.visibility = View.VISIBLE
-                                            message_layout.visibility = View.GONE
+                                            if(currentCalendar.before(cal) or currentCalendar.equals(cal)){
+                                                question_1_layout.visibility = View.VISIBLE
+                                                message_layout.visibility = View.GONE
+                                            } else{
+                                                question_1_layout.visibility = View.GONE
+                                                showPopUp("Sorry but you have to wait till ${calendarDateToWait} to pass the test")
+                                            }
+
                                         }
 
                                     }
                                     else{
                                         question_1_layout.visibility = View.GONE
-                                        showPopUp("Sorry but you have to wait to ${test!!.mDateToDonate}")
+                                        showPopUp("Sorry but you have to wait till ${calendarDateToWait} to pass the test")
                                     }
 
 
@@ -134,7 +152,8 @@ class TestAbilitiesActivity : AppCompatActivity() {
 
             mRef?.addValueEventListener(valueEventListenerUser as ValueEventListener)
 
-        } else if(!isConnected){
+        }
+        else if(!isConnected){
             message_layout.visibility = View.VISIBLE
             message_text.setText("Sorry you need to be connected to internet to test abilities")
         }
@@ -567,8 +586,6 @@ class TestAbilitiesActivity : AppCompatActivity() {
             finish()
         }
 
-
-
         }
 
 
@@ -589,17 +606,23 @@ class TestAbilitiesActivity : AppCompatActivity() {
         var FirebaseDatabase = FirebaseDatabase.getInstance()
         var reference = FirebaseDatabase.getReference("Data").child("Users").child(test.mUserId)
 
+        val date = Date()
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+
+        val calendarTimeToDonate = calendar
+        calendarTimeToDonate.add(Calendar.MONTH, test.mNumberOfMonths)
+        val dateToPassTest = SimpleDateFormat("yyyy.MM.dd")
+        val dateTimeToPassTest = dateToPassTest.format(calendarTimeToDonate.getTime())
+
         var user = User(user!!.mName, user!!.mPhoneNumber, user!!.mBirthday, user!!.mWeight, user!!.mSexe, user!!.mHeroType, user!!.mPoints, user!!.mNumberOfTest + 1 , user!!.mNumberOfDonations, user!!.mUserId)
+        user.dateToPassTest = dateTimeToPassTest
         reference.setValue(user)
+
         var FirebaseDatabase2 = com.google.firebase.database.FirebaseDatabase.getInstance()
         var reference2 = FirebaseDatabase2.getReference("Data").child("Test").child(user!!.mUserId.toString()).child((user!!.mNumberOfTest - 1).toString())
 
         reference2.setValue(test)
-
-
-
-
-
 
     }
 
